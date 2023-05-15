@@ -15,7 +15,7 @@ class FormCriarConta(FlaskForm):
     def validate_email(self, email):
         usuario = Usuario.query.filter_by(email=email.data).first()
         if usuario:
-            raise ValidationError('E-mail já cadastrado. Cadastre-se com outro e-mail ou faça login')
+            raise ValidationError('E-mail já cadastrado. Cadastre-se com outro e-mail ou faça login para continuar')
 
 class FormLogin(FlaskForm):
     email = StringField('E-mail', validators=[DataRequired(), Email()])
@@ -36,9 +36,10 @@ class FormEditarPerfil(FlaskForm):
     botao_submit_editarperfil = SubmitField('Editar Perfil')
 
     def validate_email(self, email):
-        usuario = Usuario.query.filter_by(email=email.data).first()
-        if usuario:
-            raise ValidationError('E-mail já cadastrado. Cadastre-se com outro e-mail ou faça login para continuar')
+        if current_user.email != email.data:
+            usuario = Usuario.query.filter_by(email=email.data).first()
+            if usuario:
+                raise ValidationError('Já existe um usuário com esse e-mail. Cadastre outro e-mail')
 
 class FormCriarPost(FlaskForm):
     titulo = StringField('Titulo do post', validators=[DataRequired(), Length(1, 140)])
