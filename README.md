@@ -1,19 +1,16 @@
-# Site de comunidade em flask e bootstrap na qual se emprega conceitos de login, formularios e banco de dados.
-Ele contém os seguintes routes
-#home para vizualizar os posts
-#contato para as informações de contato
-#usuarios para que se possa ver todos os usuários
-#login para criar conta e fazer login
-#sair para fazer o logout da conta
-#perfil para a visualição do perfil do usuário logado
-#criar_post para que o usuário possa postar textos
-#editar_perfil para que o usuário atualize as informações de perfil, mude a foto do perfil do usuário e atualiza os cursos
-#exibir_post para o usário veja o post de forma especifica e caso ele seja o autor ele possa editar o post
-#excluir_post para o dono do post possa excluir o post
-Na pagina de forms temos
-#FormCriarConta para criar conta que contém um def validate_email(self, email) para não haver mais de uma conta para um e-mail
-#FormLogin para fazer login
-#FormEditarPerfil editar o perfil, adicionar foto e adicionar cursos que contém def validate_email(self, email): para o usuário não possa mudar para um e-mail existente
-#FormCriarPost para que o usuário possa criar post
-Na pagina models temos
-#A class Usuario e a class Post para que se possa trabalhar o banco de dados
+# Site de comunidade em flask e bootstrap na qual se emprega conceitos de formularios e banco de dados.
+O site contém as seguintes rotas
+
+
+home: que permite o acesso de usuários não logados
+contato: que permite o acesso de usuários não logados
+usuarios: apenas usuários logados tem permissão para acessar
+login: pagina que serve tanto para login quanto para criar conta
+sair: Se o usurário esta logado ele pode encerrar o login
+perfil: apenas usuários logados tem permissão para acessar
+criar_post: local onde os usuários logados vão poder fazer postagem de assuntos diversos
+atualizar_cursos: local onde as pessoas irão colocar os cursos dentro das opções disponiveis do site
+editar_perfil: para que se possa fazer as modificações do perfil do usuário logado
+exibir_post(post_id): Pra que o usuário possa modificar um post em que ele é o autor
+excluir_post(post_id): Pra que o usuário possa excluir um post em que ele é o autor
+
